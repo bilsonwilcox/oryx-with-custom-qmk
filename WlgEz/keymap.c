@@ -29,12 +29,12 @@ enum tap_dance_codes {
   DANCE_7,
 };
 
-#define DUAL_FUNC_0 LT(12, KC_F22)
-#define DUAL_FUNC_1 LT(2, KC_F17)
-#define DUAL_FUNC_2 LT(3, KC_F12)
-#define DUAL_FUNC_3 LT(4, KC_8)
-#define DUAL_FUNC_4 LT(15, KC_F24)
-#define DUAL_FUNC_5 LT(2, KC_F2)
+#define DUAL_FUNC_0 LT(11, KC_Z)
+#define DUAL_FUNC_1 LT(11, KC_F12)
+#define DUAL_FUNC_2 LT(6, KC_D)
+#define DUAL_FUNC_3 LT(14, KC_5)
+#define DUAL_FUNC_4 LT(12, KC_W)
+#define DUAL_FUNC_5 LT(2, KC_I)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TT(4),          KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_SCLN,        KC_BSLS,        
     MT(MOD_LSFT, KC_DELETE),MT(MOD_LALT, KC_A),MT(MOD_LSFT, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LCTL, KC_F),KC_G,                                           KC_H,           MT(MOD_RCTL, KC_J),MT(MOD_RGUI, KC_K),MT(MOD_RSFT, KC_L),MT(MOD_RALT, KC_P),KC_QUOTE,       
     KC_LEFT_GUI,    KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_ENTER,       
-                                                    TD(DANCE_1),    MT(MOD_LCTL, KC_TAB),                                KC_LEFT_SHIFT,  LT(2, KC_BSPC)
+                                                    TD(DANCE_1),    MT(MOD_LCTL, KC_TAB),                                KC_LEFT_SHIFT,  MO(2)
   ),
   [1] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_UNDS,        KC_TRANSPARENT, 
@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [2] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_CAPS),  KC_AUDIO_VOL_UP,
     KC_LEFT_ALT,    LALT(LSFT(KC_KP_ASTERISK)),LGUI(KC_LBRC),  TD(DANCE_2),    LGUI(KC_RBRC),  DUAL_FUNC_1,                                    LCTL(LSFT(KC_H)),LCTL(LSFT(KC_LEFT)),KC_UP,          LCTL(LSFT(KC_RIGHT)),DUAL_FUNC_3,    KC_AUDIO_MUTE,  
-    KC_TRANSPARENT, LALT(LSFT(KC_KP_MINUS)),KC_MS_BTN2,     DUAL_FUNC_2,    KC_MS_BTN1,     KC_BSPC,                                        DUAL_FUNC_4,    KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_MEDIA_PLAY_PAUSE,KC_AUDIO_VOL_DOWN,
+    KC_TRANSPARENT, KC_X,           KC_MS_BTN2,     DUAL_FUNC_2,    KC_MS_BTN1,     KC_BSPC,                                        DUAL_FUNC_4,    KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_MEDIA_PLAY_PAUSE,KC_AUDIO_VOL_DOWN,
     KC_TRANSPARENT, LALT(LSFT(KC_KP_PLUS)),LCTL(LSFT(KC_TAB)),LGUI(KC_W),     LCTL(KC_TAB),   ST_MACRO_0,                                     LGUI(LSFT(KC_S)),KC_PAGE_UP,     DUAL_FUNC_5,    KC_PGDN,        TD(DANCE_3),    KC_TRANSPARENT, 
                                                     LT(3, KC_SPACE),KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
@@ -81,6 +81,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
+  'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
+  'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
+  'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
+  'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
+  'L', 'L', 'R', 'R'
+);
+
 const uint16_t PROGMEM combo0[] = { KC_5, KC_6, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
@@ -93,8 +101,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM -50;
         case MT(MOD_LCTL, KC_TAB):
             return TAPPING_TERM -100;
-        case LT(2, KC_BSPC):
-            return TAPPING_TERM -125;
+        case MO(2):
+            return TAPPING_TERM -100;
         case TD(DANCE_3):
             return TAPPING_TERM + 300;
         case TD(DANCE_5):
@@ -196,7 +204,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_3:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_LBRC)SS_DELAY(100)  SS_TAP(X_RBRC)SS_DELAY(100)  SS_TAP(X_LEFT));
+      SEND_STRING(SS_LALT(SS_TAP(X_LBRC) SS_TAP(X_RBRC) SS_TAP(X_SPACE) SS_TAP(X_LEFT) SS_TAP(X_LEFT) SS_TAP(X_3) ));
     }
     break;
     case ST_MACRO_4:
