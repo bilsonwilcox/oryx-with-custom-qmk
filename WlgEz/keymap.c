@@ -31,13 +31,13 @@ enum tap_dance_codes {
   DANCE_7,
 };
 
-#define DUAL_FUNC_0 LT(14, KC_S)
-#define DUAL_FUNC_1 LT(12, KC_F13)
-#define DUAL_FUNC_2 LT(5, KC_5)
-#define DUAL_FUNC_3 LT(5, KC_W)
-#define DUAL_FUNC_4 LT(7, KC_1)
-#define DUAL_FUNC_5 LT(12, KC_F6)
-#define DUAL_FUNC_6 LT(10, KC_X)
+#define DUAL_FUNC_0 LT(3, KC_G)
+#define DUAL_FUNC_1 LT(4, KC_E)
+#define DUAL_FUNC_2 LT(12, KC_F14)
+#define DUAL_FUNC_3 LT(10, KC_F6)
+#define DUAL_FUNC_4 LT(8, KC_F7)
+#define DUAL_FUNC_5 LT(7, KC_X)
+#define DUAL_FUNC_6 LT(3, KC_F8)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [2] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_CAPS),  KC_AUDIO_VOL_UP,
     KC_LEFT_ALT,    LALT(LSFT(KC_KP_ASTERISK)),LGUI(KC_LBRC),  TD(DANCE_2),    LGUI(KC_RBRC),  DUAL_FUNC_2,                                    LCTL(LSFT(KC_H)),LCTL(LSFT(KC_LEFT)),KC_UP,          LCTL(LSFT(KC_RIGHT)),DUAL_FUNC_4,    KC_AUDIO_MUTE,  
-    KC_TRANSPARENT, KC_X,           KC_MS_BTN2,     DUAL_FUNC_3,    KC_MS_BTN1,     KC_BSPC,                                        DUAL_FUNC_5,    KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_MEDIA_PLAY_PAUSE,KC_AUDIO_VOL_DOWN,
+    KC_TRANSPARENT, LALT(LSFT(KC_MINUS)),KC_MS_BTN2,     DUAL_FUNC_3,    KC_MS_BTN1,     KC_BSPC,                                        DUAL_FUNC_5,    KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_MEDIA_PLAY_PAUSE,KC_AUDIO_VOL_DOWN,
     KC_TRANSPARENT, LALT(LSFT(KC_KP_PLUS)),LCTL(LSFT(KC_TAB)),LGUI(KC_W),     LCTL(KC_TAB),   ST_MACRO_0,                                     LGUI(LSFT(KC_S)),KC_PAGE_UP,     DUAL_FUNC_6,    KC_PGDN,        TD(DANCE_3),    KC_TRANSPARENT, 
                                                     LT(3, KC_SPACE),KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
