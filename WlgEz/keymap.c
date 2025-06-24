@@ -31,13 +31,13 @@ enum tap_dance_codes {
   DANCE_7,
 };
 
-#define DUAL_FUNC_0 LT(3, KC_G)
-#define DUAL_FUNC_1 LT(4, KC_E)
-#define DUAL_FUNC_2 LT(12, KC_F14)
-#define DUAL_FUNC_3 LT(10, KC_F6)
-#define DUAL_FUNC_4 LT(8, KC_F7)
-#define DUAL_FUNC_5 LT(7, KC_X)
-#define DUAL_FUNC_6 LT(3, KC_F8)
+#define DUAL_FUNC_0 LT(1, KC_J)
+#define DUAL_FUNC_1 LT(3, KC_F9)
+#define DUAL_FUNC_2 LT(5, KC_2)
+#define DUAL_FUNC_3 LT(2, KC_N)
+#define DUAL_FUNC_4 LT(7, KC_F2)
+#define DUAL_FUNC_5 LT(15, KC_F14)
+#define DUAL_FUNC_6 LT(12, KC_F7)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -202,7 +202,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_2:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_LEFT_ALT)SS_DELAY(100)  SS_TAP(X_V)SS_DELAY(100)  SS_TAP(X_M)SS_DELAY(100)  SS_TAP(X_C)SS_DELAY(100)  SS_TAP(X_C));
+      SEND_STRING(SS_TAP(X_LEFT_ALT)SS_DELAY(100)  SS_TAP(X_V)SS_DELAY(100)  SS_TAP(X_M)SS_DELAY(100)  SS_TAP(X_C)SS_DELAY(100)  SS_TAP(X_M)SS_DELAY(100)  SS_TAP(X_L)SS_DELAY(100)  SS_TAP(X_C));
     }
     break;
     case ST_MACRO_3:
@@ -212,7 +212,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_4:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_LEFT_ALT)SS_DELAY(100)  SS_TAP(X_V)SS_DELAY(100)  SS_TAP(X_M)SS_DELAY(100)  SS_TAP(X_C)SS_DELAY(100)  SS_TAP(X_M));
+      SEND_STRING(SS_TAP(X_LEFT_ALT)SS_DELAY(100)  SS_TAP(X_V)SS_DELAY(100)  SS_TAP(X_M)SS_DELAY(100)  SS_TAP(X_C)SS_DELAY(100)  SS_TAP(X_M)SS_DELAY(100)  SS_TAP(X_L)SS_DELAY(100)  SS_TAP(X_M));
     }
     break;
     case ST_MACRO_5:
