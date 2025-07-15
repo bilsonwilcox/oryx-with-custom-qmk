@@ -32,13 +32,13 @@ enum tap_dance_codes {
   DANCE_7,
 };
 
-#define DUAL_FUNC_0 LT(3, KC_F13)
-#define DUAL_FUNC_1 LT(2, KC_N)
-#define DUAL_FUNC_2 LT(4, KC_Q)
-#define DUAL_FUNC_3 LT(1, KC_K)
-#define DUAL_FUNC_4 LT(7, KC_G)
-#define DUAL_FUNC_5 LT(12, KC_X)
-#define DUAL_FUNC_6 LT(10, KC_3)
+#define DUAL_FUNC_0 LT(4, KC_F16)
+#define DUAL_FUNC_1 LT(7, KC_F17)
+#define DUAL_FUNC_2 LT(11, KC_F14)
+#define DUAL_FUNC_3 LT(11, KC_W)
+#define DUAL_FUNC_4 LT(4, KC_H)
+#define DUAL_FUNC_5 LT(9, KC_F17)
+#define DUAL_FUNC_6 LT(15, KC_F4)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -46,13 +46,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TT(4),          KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           DUAL_FUNC_0,    KC_SCLN,        KC_BSLS,        
     MT(MOD_LSFT, KC_DELETE),MT(MOD_LALT, KC_A),MT(MOD_LSFT, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LCTL, KC_F),KC_G,                                           KC_H,           MT(MOD_RCTL, KC_J),MT(MOD_RGUI, KC_K),MT(MOD_RSFT, KC_L),MT(MOD_RALT, KC_P),KC_QUOTE,       
     KC_LEFT_GUI,    KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_ENTER,       
-                                                    TD(DANCE_1),    KC_TAB,                                         KC_LEFT_SHIFT,  MO(2)
+                                                    TD(DANCE_1),    KC_LEFT_CTRL,                                   KC_LEFT_SHIFT,  MO(2)
   ),
   [1] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_UNDS,        KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,                                        KC_F12,         KC_7,           KC_8,           KC_9,           KC_MINUS,       KC_SLASH,       
     KC_DQUO,        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,                                        KC_BSPC,        KC_4,           KC_5,           KC_6,           KC_PLUS,        KC_ASTR,        
-    DUAL_FUNC_1,    KC_QUES,        KC_LBRC,        KC_RBRC,        KC_LCBR,        KC_RCBR,                                        KC_TRANSPARENT, KC_1,           KC_2,           KC_3,           KC_DOT,         KC_EQUAL,       
+    DUAL_FUNC_1,    KC_QUES,        KC_LBRC,        KC_RBRC,        KC_LCBR,        KC_RCBR,                                        KC_TAB,         KC_1,           KC_2,           KC_3,           KC_DOT,         KC_EQUAL,       
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_BSPC,        KC_0
   ),
   [2] = LAYOUT_voyager(
@@ -102,8 +102,6 @@ combo_t key_combos[COMBO_COUNT] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case TD(DANCE_1):
-            return TAPPING_TERM -50;
-        case KC_TAB:
             return TAPPING_TERM -50;
         case MO(2):
             return TAPPING_TERM -100;
