@@ -1,11 +1,9 @@
 #define CHORDAL_HOLD
-#define QUICK_TAP_TERM 0
-
 #undef RGB_MATRIX_TIMEOUT
 #define RGB_MATRIX_TIMEOUT 600000
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
-#define SERIAL_NUMBER "WlgEz/yoB9qx"
+#define SERIAL_NUMBER "WlgEz/qm0la3"
 #define LAYER_STATE_8BIT
 #define COMBO_COUNT 1
 
