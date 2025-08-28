@@ -31,15 +31,15 @@ enum tap_dance_codes {
   DANCE_7,
 };
 
-#define DUAL_FUNC_0 LT(2, KC_F5)
-#define DUAL_FUNC_1 LT(2, KC_F20)
-#define DUAL_FUNC_2 LT(12, KC_F7)
-#define DUAL_FUNC_3 LT(6, KC_S)
-#define DUAL_FUNC_4 LT(10, KC_F4)
-#define DUAL_FUNC_5 LT(10, KC_F17)
-#define DUAL_FUNC_6 LT(4, KC_F12)
-#define DUAL_FUNC_7 LT(8, KC_F12)
-#define DUAL_FUNC_8 LT(14, KC_Q)
+#define DUAL_FUNC_0 LT(6, KC_A)
+#define DUAL_FUNC_1 LT(1, KC_F2)
+#define DUAL_FUNC_2 LT(2, KC_P)
+#define DUAL_FUNC_3 LT(4, KC_5)
+#define DUAL_FUNC_4 LT(7, KC_1)
+#define DUAL_FUNC_5 LT(10, KC_Z)
+#define DUAL_FUNC_6 LT(6, KC_F13)
+#define DUAL_FUNC_7 LT(4, KC_K)
+#define DUAL_FUNC_8 LT(10, KC_C)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -199,12 +199,6 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-extern bool set_scrolling;
-extern bool navigator_turbo;
-extern bool navigator_aim;
-void pointing_device_init_user(void) {
-    set_auto_mouse_enable(true);
-}
 
 
 typedef struct {
@@ -689,13 +683,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           unregister_code16(KC_END);
         }  
       }  
-      return false;
-    case DRAG_SCROLL:
-      if (record->event.pressed) {
-        set_scrolling = true;
-      } else {
-        set_scrolling = false;
-      }
       return false;
     case RGB_SLD:
       if (record->event.pressed) {
