@@ -17,10 +17,6 @@ enum custom_keycodes {
   ST_MACRO_5,
   DRAG_SCROLL,
   TOGGLE_SCROLL,
-  NAVIGATOR_INC_CPI,
-  NAVIGATOR_DEC_CPI,
-  NAVIGATOR_TURBO,
-  NAVIGATOR_AIM
 };
 
 
@@ -36,13 +32,13 @@ enum tap_dance_codes {
   DANCE_7,
 };
 
-#define DUAL_FUNC_0 LT(5, KC_F11)
-#define DUAL_FUNC_1 LT(15, KC_F23)
-#define DUAL_FUNC_2 LT(13, KC_E)
-#define DUAL_FUNC_3 LT(11, KC_I)
-#define DUAL_FUNC_4 LT(15, KC_9)
-#define DUAL_FUNC_5 LT(7, KC_T)
-#define DUAL_FUNC_6 LT(11, KC_Q)
+#define DUAL_FUNC_0 LT(4, KC_P)
+#define DUAL_FUNC_1 LT(3, KC_F22)
+#define DUAL_FUNC_2 LT(6, KC_A)
+#define DUAL_FUNC_3 LT(14, KC_F22)
+#define DUAL_FUNC_4 LT(14, KC_F19)
+#define DUAL_FUNC_5 LT(2, KC_G)
+#define DUAL_FUNC_6 LT(4, KC_X)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -86,13 +82,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
-  ),
-  [6] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_WH_UP,    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN2,     KC_MS_BTN3,     KC_MS_BTN1,     NAVIGATOR_INC_CPI,                                KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_WH_DOWN,  KC_TRANSPARENT, NAVIGATOR_DEC_CPI,                                KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-                                                    DRAG_SCROLL,    LCTL(KC_CAPS),                                  KC_TRANSPARENT, KC_TRANSPARENT
   ),
 };
 
@@ -153,8 +142,6 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
     [5] = { {231,78,244}, {231,78,244}, {231,78,244}, {231,78,244}, {231,78,244}, {231,78,244}, {251,75,244}, {251,75,244}, {251,75,244}, {251,75,244}, {251,75,244}, {251,75,244}, {249,53,255}, {249,53,255}, {249,53,255}, {249,53,255}, {249,53,255}, {249,53,255}, {103,11,226}, {103,11,226}, {103,11,226}, {103,11,226}, {103,11,226}, {103,11,226}, {103,11,226}, {103,11,226}, {81,126,87}, {81,126,87}, {81,126,87}, {81,126,87}, {81,126,87}, {81,126,87}, {66,158,119}, {66,158,119}, {66,158,119}, {66,158,119}, {66,158,119}, {66,158,119}, {55,126,169}, {55,126,169}, {55,126,169}, {55,126,169}, {55,126,169}, {55,126,169}, {46,89,243}, {46,89,243}, {46,89,243}, {46,89,243}, {46,89,243}, {46,89,243}, {46,89,243}, {46,89,243} },
 
-    [6] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {100,71,252}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {100,71,252}, {100,71,252}, {100,71,252}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {100,71,252}, {0,0,0}, {0,0,0}, {0,0,0}, {86,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
-
 };
 
 void set_layer_color(int layer) {
@@ -196,9 +183,6 @@ bool rgb_matrix_indicators_user(void) {
         break;
       case 5:
         set_layer_color(5);
-        break;
-      case 6:
-        set_layer_color(6);
         break;
      default:
         if (rgb_matrix_get_flags() == LED_FLAG_NONE) {
@@ -688,34 +672,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     break;
-  case NAVIGATOR_TURBO:
-    if (record->event.pressed) {
-      navigator_turbo = true;
-    } else {
-      navigator_turbo = false;
-    }
-    return false;
-  case NAVIGATOR_AIM:
-    if (record->event.pressed) {
-      navigator_aim = true;
-    } else {
-      navigator_aim = false;
-    }
-    return false;
-  case NAVIGATOR_INC_CPI:
-    if (record->event.pressed) {
-        pointing_device_set_cpi(1);
-        keyboard_config.navigator_cpi = pointing_device_get_cpi();
-        eeconfig_update_kb(keyboard_config.raw);
-    }
-    return false;
-  case NAVIGATOR_DEC_CPI:
-    if (record->event.pressed) {
-        pointing_device_set_cpi(0);
-        keyboard_config.navigator_cpi = pointing_device_get_cpi();
-        eeconfig_update_kb(keyboard_config.raw);
-    }
-    return false;
     case RGB_SLD:
       if (record->event.pressed) {
         rgblight_mode(1);
