@@ -31,14 +31,14 @@ enum tap_dance_codes {
   DANCE_7,
 };
 
-#define DUAL_FUNC_0 LT(14, KC_F15)
-#define DUAL_FUNC_1 LT(5, KC_F13)
-#define DUAL_FUNC_2 LT(11, KC_0)
-#define DUAL_FUNC_3 LT(9, KC_F17)
-#define DUAL_FUNC_4 LT(15, KC_G)
-#define DUAL_FUNC_5 LT(10, KC_F16)
-#define DUAL_FUNC_6 LT(14, KC_L)
-#define DUAL_FUNC_7 LT(2, KC_F21)
+#define DUAL_FUNC_0 LT(15, KC_D)
+#define DUAL_FUNC_1 LT(14, KC_V)
+#define DUAL_FUNC_2 LT(4, KC_F13)
+#define DUAL_FUNC_3 LT(3, KC_F3)
+#define DUAL_FUNC_4 LT(1, KC_X)
+#define DUAL_FUNC_5 LT(5, KC_F20)
+#define DUAL_FUNC_6 LT(11, KC_F10)
+#define DUAL_FUNC_7 LT(2, KC_F5)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -59,14 +59,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_CAPS),  KC_AUDIO_VOL_UP,
     KC_LEFT_ALT,    LALT(LSFT(KC_KP_ASTERISK)),LGUI(KC_LBRC),  TD(DANCE_2),    LGUI(KC_RBRC),  DUAL_FUNC_2,                                    LCTL(LSFT(KC_H)),LCTL(LSFT(KC_LEFT)),KC_UP,          LCTL(LSFT(KC_RIGHT)),DUAL_FUNC_4,    KC_AUDIO_MUTE,  
     KC_TRANSPARENT, LALT(LSFT(KC_MINUS)),KC_MS_BTN2,     DUAL_FUNC_3,    KC_MS_BTN1,     KC_BSPC,                                        DUAL_FUNC_5,    KC_LEFT,        KC_DOWN,        KC_RIGHT,       DUAL_FUNC_6,    KC_AUDIO_VOL_DOWN,
-    KC_TRANSPARENT, LALT(LSFT(KC_KP_PLUS)),LCTL(LSFT(KC_TAB)),LGUI(KC_W),     LCTL(KC_TAB),   LCTL(KC_CAPS),                                  LGUI(LSFT(KC_S)),KC_PAGE_UP,     DUAL_FUNC_7,    KC_PGDN,        TD(DANCE_3),    KC_TRANSPARENT, 
+    KC_TRANSPARENT, LALT(LSFT(KC_KP_PLUS)),LCTL(LSFT(KC_TAB)),LGUI(KC_W),     LCTL(KC_TAB),   DRAG_SCROLL,                                    LGUI(LSFT(KC_S)),KC_PAGE_UP,     DUAL_FUNC_7,    KC_PGDN,        TD(DANCE_3),    KC_TRANSPARENT, 
                                                     LT(3, KC_SPACE),LCTL(KC_CAPS),                                  KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [3] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_CAPS),  KC_AUDIO_VOL_UP,
     KC_LEFT_ALT,    KC_TRANSPARENT, LGUI(KC_LBRC),  TD(DANCE_4),    LGUI(KC_RBRC),  DUAL_FUNC_2,                                    LCTL(LSFT(KC_H)),LCTL(LSFT(KC_LEFT)),KC_MS_UP,       LCTL(LSFT(KC_RIGHT)),DUAL_FUNC_4,    KC_AUDIO_MUTE,  
     KC_TRANSPARENT, LALT(LSFT(KC_KP_MINUS)),KC_MS_BTN2,     DUAL_FUNC_3,    KC_MS_BTN1,     KC_BSPC,                                        DUAL_FUNC_5,    KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    DUAL_FUNC_6,    KC_AUDIO_VOL_DOWN,
-    KC_TRANSPARENT, LALT(LSFT(KC_KP_PLUS)),LCTL(LSFT(KC_TAB)),LGUI(KC_W),     LCTL(KC_TAB),   LCTL(KC_CAPS),                                  LGUI(LSFT(KC_S)),KC_PAGE_UP,     DUAL_FUNC_7,    KC_PGDN,        TD(DANCE_5),    KC_TRANSPARENT, 
+    KC_TRANSPARENT, LALT(LSFT(KC_KP_PLUS)),LCTL(LSFT(KC_TAB)),LGUI(KC_W),     LCTL(KC_TAB),   DRAG_SCROLL,                                    LGUI(LSFT(KC_S)),KC_PAGE_UP,     DUAL_FUNC_7,    KC_PGDN,        TD(DANCE_5),    KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [4] = LAYOUT_voyager(
